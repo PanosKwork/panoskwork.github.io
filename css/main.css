@@ -1,10 +1,10 @@
 header {
   width: 90%;
 }
-.container .main-inner {
+container .main-inner {
   width: 90%;
 }
-.content-wrap {
+content-wrap {
   width: calc(100% - 260px);
 }
 /* normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -1952,7 +1952,7 @@ bitcoin:hover p {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5d174f;
+  background: #17ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
