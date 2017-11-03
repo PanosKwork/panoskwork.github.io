@@ -40,14 +40,14 @@
   
     
     <entry>
-      <title><![CDATA[ALL tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[All categories]]></title>
+      <url>/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[All categories]]></title>
-      <url>/categories/index.html</url>
+      <title><![CDATA[ALL tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
