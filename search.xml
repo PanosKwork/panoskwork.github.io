@@ -2,8 +2,34 @@
 <search> 
   
     
+    <entry>
+      <title><![CDATA[draft]]></title>
+      <url>/2017/11/04/draft/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
   
   
+    
+    <entry>
+      <title><![CDATA[links]]></title>
+      <url>/links/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[notes]]></title>
+      <url>/notes/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[pictures]]></title>
+      <url>/pictures/index.html</url>
+      <content type="html"></content>
+    </entry>
     
     <entry>
       <title><![CDATA[All categories]]></title>
