@@ -2,8 +2,22 @@
 <search> 
   
     
+    <entry>
+      <title><![CDATA[test_my_site]]></title>
+      <url>/2017/11/04/test-my-site/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
   
   
+    
+    <entry>
+      <title><![CDATA[links]]></title>
+      <url>/links/index.html</url>
+      <content type="html"></content>
+    </entry>
     
     <entry>
       <title><![CDATA[分类]]></title>
@@ -14,12 +28,6 @@
     <entry>
       <title><![CDATA[notes]]></title>
       <url>/notes/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[links]]></title>
-      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
