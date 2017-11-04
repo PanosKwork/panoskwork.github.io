@@ -2,18 +2,26 @@
 <search> 
   
     
-  
-  
-    
     <entry>
-      <title><![CDATA[links]]></title>
-      <url>/links/index.html</url>
-      <content type="html"></content>
+      <title><![CDATA[android]]></title>
+      <url>/2017/11/04/android/</url>
+      <content type="html"><![CDATA[<h1 id="1-Android入门基础"><a href="#1-Android入门基础" class="headerlink" title="1.Android入门基础"></a>1.Android入门基础</h1><h2 id="1-6数据保存"><a href="#1-6数据保存" class="headerlink" title="1.6数据保存"></a>1.6数据保存</h2><h3 id="1-6-1保存到文件"><a href="#1-6-1保存到文件" class="headerlink" title="1.6.1保存到文件"></a>1.6.1保存到文件</h3><h3 id="1-6-2保存到perference"><a href="#1-6-2保存到perference" class="headerlink" title="1.6.2保存到perference"></a>1.6.2保存到perference</h3><h3 id="1-6-3保存到数据库"><a href="#1-6-3保存到数据库" class="headerlink" title="1.6.3保存到数据库"></a>1.6.3保存到数据库</h3><h1 id="Android分享操作"><a href="#Android分享操作" class="headerlink" title="Android分享操作"></a>Android分享操作</h1><h1 id="Android多媒体"><a href="#Android多媒体" class="headerlink" title="Android多媒体"></a>Android多媒体</h1><h1 id="Android图像与动画"><a href="#Android图像与动画" class="headerlink" title="Android图像与动画"></a>Android图像与动画</h1><h1 id="Android网络连接与云服务"><a href="#Android网络连接与云服务" class="headerlink" title="Android网络连接与云服务"></a>Android网络连接与云服务</h1><h1 id="Android联系人与位置信息"><a href="#Android联系人与位置信息" class="headerlink" title="Android联系人与位置信息"></a>Android联系人与位置信息</h1><h1 id="Android交互设计"><a href="#Android交互设计" class="headerlink" title="Android交互设计"></a>Android交互设计</h1><h1 id="Android界面设计"><a href="#Android界面设计" class="headerlink" title="Android界面设计"></a>Android界面设计</h1><h1 id="Android用户输入"><a href="#Android用户输入" class="headerlink" title="Android用户输入"></a>Android用户输入</h1><h1 id="Android后台任务"><a href="#Android后台任务" class="headerlink" title="Android后台任务"></a>Android后台任务</h1><h1 id="Android性能优化"><a href="#Android性能优化" class="headerlink" title="Android性能优化"></a>Android性能优化</h1><h1 id="Android安全与隐患"><a href="#Android安全与隐患" class="headerlink" title="Android安全与隐患"></a>Android安全与隐患</h1><h1 id="Android测试程序"><a href="#Android测试程序" class="headerlink" title="Android测试程序"></a>Android测试程序</h1>]]></content>
+      
+        
     </entry>
+    
+  
+  
     
     <entry>
       <title><![CDATA[分类]]></title>
       <url>/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -24,14 +32,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[pictures]]></title>
-      <url>/pictures/index.html</url>
+      <title><![CDATA[ALL tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[ALL tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[pictures]]></title>
+      <url>/pictures/index.html</url>
       <content type="html"></content>
     </entry>
     
