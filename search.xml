@@ -6,12 +6,6 @@
   
     
     <entry>
-      <title><![CDATA[pictures]]></title>
-      <url>/pictures/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[分类]]></title>
       <url>/categories/index.html</url>
       <content type="html"></content>
@@ -26,6 +20,12 @@
     <entry>
       <title><![CDATA[notes]]></title>
       <url>/notes/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[pictures]]></title>
+      <url>/pictures/index.html</url>
       <content type="html"></content>
     </entry>
     
