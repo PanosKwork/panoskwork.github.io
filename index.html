@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  516
+                  647
                 </span>
               
 
@@ -392,7 +392,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -462,13 +462,23 @@ File file = Fiel.creatTempFile(fileName,null,context.getCacheDir());
 
 保存文件到External stroage
 通过getExternalStorageState()检验external storage是否可用,返回MEDIA_MOUNTED则可读写
-1String state = Environment.getExternalStorageState();
+123456789101112131415161718//Check if ecternal storage is available for read and writepublic boolean isExternalStorageWriteable()&#123;	String state = Environment.getExternalStorageState();	if(Enviroment.MEDIA_MOUNTED.equals(state))&#123;      return true;	&#125;	return false;&#125;//Check if external storage is available to at least readpublic boolean isExternalStorageReadable()&#123;	String state = Environment.getExternalStorageState();	if(Environment.MEDIA_MOUNTED.equals(state) || 	   Environment.MEDIA_MOUNTED_READ_ONLY.equals(state))&#123;         return true;	&#125;	return false;     &#125;
 ​
 ​
 
+一般步骤
 
-1.6.2保存到perference1.6.3保存到数据库Android分享操作Android多媒体Android图像与动画Android网络连接与云服务Android联系人与位置信息Android交互设计Android界面设计Android用户输入Android后台任务Android性能优化Android安全与隐患Android测试程序
-          
+声明读写权限
+1&lt;uses-permission android:name = "android.permission.WRITE_EXTERNAL_STORAGE"&gt;
+​
+
+动态请求权限(CompileSdkVersion在23以上的需要)
+1ActivityCompat.requestPermission(this,new String[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;)
+​
+
+存储数据
+123456789101112//创建文件夹File dir = new File(Enviro
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/04/android/#more" rel="contents">
@@ -651,7 +661,7 @@ File file = Fiel.creatTempFile(fileName,null,context.getCacheDir());
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">516</span>
+    <span title="Site words total count">647</span>
   
 -->
 </div>
