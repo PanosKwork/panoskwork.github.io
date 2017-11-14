@@ -416,68 +416,7 @@
         
           
           第一行代码笔记
-6.数据保存6.1保存到文件存储到内部还是外部所有的Android设备都有两个文件存储区域：“internal”和“external”
-
-Internal storage:
-
-总是可用的
-
-这里的文件默认只能被我们的APP所访问
-
-当用户卸载APP时，系统会把internal内该APP相关的文件都清除干净
-
-Internal是我们在想确保不被用户与其他APP所访问的最佳存储位置
-​
-
-
-
-External storage:
-
-并不总是可用的，因为用户有时会通过USB存储模式挂载外部存储器，当取下挂载的这部分后，就无法对其进行访问了
-是大家都可以访问的，因此保存在这里的文件可能被其他程序访问
-当用户卸载我们的app时，系统仅仅会删除external根目录（getExternalFilesDir())）下的相关文
-External是在不需要严格的访问权限并且希望这些文件能够被其他app所共享或者是允许用户通过电脑访问时的最佳存储区域
-
-
-
-获取External存储权限 &lt;uses-permission android name=&quot;android.perimission.WRITE_EXTERNAL_STORAGE&quot;&gt;
-
-如果已经声明了此权限，则默认也声明了READ_EXTERNAL_STORAGE  
-
-保存到internal storage
-获取目录作为FILE的对象
-
-getFileDir():返回一个File，代表了APP的internal目录
-getCache():返回一个File,代表了APP的internal缓存目录
-
-
-执行openFileOutput()获取一个FileOutputStream用于写文件到internal目录，如下：
-123FileOutputStream outputStream = openFileOutput(filename,CONTEXT.MODE_PRIVATE);outputStream.write();outputStream.close();//一定记得调用close
-​
-
-利用creatTempFile()缓存文件
-File file = Fiel.creatTempFile(fileName,null,context.getCacheDir());
-​
-
-
-保存文件到External stroage
-通过getExternalStorageState()检验external storage是否可用,返回MEDIA_MOUNTED则可读写
-123456789101112131415161718//Check if ecternal storage is available for read and writepublic boolean isExternalStorageWriteable()&#123;	String state = Environment.getExternalStorageState();	if(Enviroment.MEDIA_MOUNTED.equals(state))&#123;      return true;	&#125;	return false;&#125;//Check if external storage is available to at least readpublic boolean isExternalStorageReadable()&#123;	String state = Environment.getExternalStorageState();	if(Environment.MEDIA_MOUNTED.equals(state) || 	   Environment.MEDIA_MOUNTED_READ_ONLY.equals(state))&#123;         return true;	&#125;	return false;     &#125;
-​
-​
-
-一般步骤
-
-声明读写权限
-1&lt;uses-permission android:name = "android.permission.WRITE_EXTERNAL_STORAGE"&gt;
-​
-
-动态请求权限(CompileSdkVersion在23以上的需要)
-1ActivityCompat.requestPermission(this,new String[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;)
-​
-
-存储数据
-1234567891011121314151617//创建文件夹File dir = new File(Envir
+6.数据保存6.1保存到文件存储到内部还是外部所有的Androi
           ...
           <!--noindex-->
           <div class="post-button text-center">
