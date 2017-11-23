@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-android总结 -intent," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="android总结1.IntentIntent作用 Intent用于封装程序的“调用意图”，两个Activity之间，可以把需要交换的数据封装成Bundle对象，然后使用Intent携带Bundle对象，实现数据交换； Intent还是各个应用程序组件之间通信的重要媒介，不管启动Activity、Service还是ContentProvider，Android均使用统一的Intent对象来封装这种">
+<meta name="keywords" content="-android总结 -intent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android总结">
+<meta property="og:url" content="http://yoursite.com/2017/11/24/Android总结/index.html">
+<meta property="og:site_name" content="不老松">
+<meta property="og:description" content="android总结1.IntentIntent作用 Intent用于封装程序的“调用意图”，两个Activity之间，可以把需要交换的数据封装成Bundle对象，然后使用Intent携带Bundle对象，实现数据交换； Intent还是各个应用程序组件之间通信的重要媒介，不管启动Activity、Service还是ContentProvider，Android均使用统一的Intent对象来封装这种">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-23T18:14:13.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android总结">
+<meta name="twitter:description" content="android总结1.IntentIntent作用 Intent用于封装程序的“调用意图”，两个Activity之间，可以把需要交换的数据封装成Bundle对象，然后使用Intent携带Bundle对象，实现数据交换； Intent还是各个应用程序组件之间通信的重要媒介，不管启动Activity、Service还是ContentProvider，Android均使用统一的Intent对象来封装这种">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/24/Android总结/"/>
+
+
+
+
+
+  <title>Android总结 | 不老松</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不老松</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-notes">
+          <a href="/notes/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-pencil"></i> <br />
+            
+            随笔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-pictures">
+          <a href="/pictures/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br />
+            
+            摄影
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/24/Android总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Panos Kwork">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不老松">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T01:54:40+08:00">
+                2017-11-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T02:14:13+08:00">
+                2017-11-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习-code/" itemprop="url" rel="index">
+                    <span itemprop="name">-学习 -code</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/24/Android总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/24/Android总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,881 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="android总结"><a href="#android总结" class="headerlink" title="android总结"></a>android总结</h1><h2 id="1-Intent"><a href="#1-Intent" class="headerlink" title="1.Intent"></a>1.Intent</h2><h3 id="Intent作用"><a href="#Intent作用" class="headerlink" title="Intent作用"></a>Intent作用</h3><ul>
+<li>Intent用于封装程序的“调用意图”，两个Activity之间，可以把需要交换的数据封装成Bundle对象，然后使用Intent携带Bundle对象，实现数据交换；</li>
+<li>Intent还是各个应用程序组件之间通信的重要媒介，不管启动Activity、Service还是ContentProvider，Android均使用统一的Intent对象来封装这种“启动意图”，很明显，Intent提供了一致的编程模式</li>
+<li>Intent还有一个好处，如果应用程序只是想启动具有某种特征的组件，并不想和某个具体的组件耦合，则可以通过在intent-filter中配置相应的属性进行处理，与stucts2重点MVC框架思路类似</li>
+</ul>
+<h3 id="基本用法：启动Activity、service，发送Broadcast"><a href="#基本用法：启动Activity、service，发送Broadcast" class="headerlink" title="基本用法：启动Activity、service，发送Broadcast"></a>基本用法：启动Activity、service，发送Broadcast</h3><ul>
+<li><p>显式：按名称指定要启动的组件，系统将立即启动Intent对象中指定的应用组件，对应字段为ComponentName对象，</p>
+<p>可由以下4种方式设置：</p>
+<ul>
+<li><p>通过Intent的构造方法直接指定</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,SecondActivity.class);</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过setComponent方法设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setComponent(<span class="keyword">new</span> ComponentName(MainActivity.<span class="keyword">this</span>,SecondActivity.class));</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过setClass方法设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setClass(MainActivity.<span class="keyword">this</span>,SecondActivity.class);</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过setClassName方法设置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setClassName(<span class="string">"com.example.demo"</span>,<span class="string">"com.example.intent.MainActivity"</span>);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p>隐式：不设置ComponentName,通过设置Intent的Action、Data、Type、Category来指定要启动的组件，在调用Intent的方法后，系统通过将Intent的内容与在设备上其他应用的清单文件中声明的Intent过滤器进行比较，从而找到要启动的相应组件。Intent与Intent过滤器匹配，则系统将启动该组件，并将其传递给对象。 如果多个Intent过滤器兼容，则系统会显示一个对话框，支持用户选取要使用的应用。</p>
+<blockquote>
+<p>思路：1.Activity A创建包含操作描述的Intent，并将其传递给startActivity()</p>
+<p>​       2.andorid系统搜索所有应用中与Intent匹配的Intent过滤器</p>
+<p>​       3.系统通过调用匹配Activity(如Activity B)的onCreate()方法并将其传递给Intent，以此启动Activity</p>
+<p><strong>警告</strong>：为了确保应用的安全性，启动Service时，尽量使用显式Intent，且不要为服务声明Intent过滤器。使用隐式Intent启动服务存在安全隐患，因为无法确定哪些服务将响应Intent，且用户无法看到哪些服务已启动，5.0后使用隐式Intent调用bindService()，系统会抛出异常</p>
+</blockquote>
+<p>​</p>
+<p>​</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setAction(<span class="string">"com.example.action"</span>);</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+<blockquote>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>1.Intent只能有一个action，而Intent过滤器可有多个action</p>
+<p>2.需要响应隐式Intent的Activity的Intent过滤器中必须添加android.intent.category.DEFAULT分类</p>
+<p>3.data在构造时传入的是Uri对象以及mimeType字符串，Uri对象会被分为4个部分<scheme>：//<host>：<port>/<path></path>（&lt;协议&gt;：//&lt;主机名&gt;：&lt;端口&gt;/&lt;路径&gt;）</port></host></scheme></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">//在Intent过滤器中的写法</span></div><div class="line">&gt; &lt;intent-filter&gt;</div><div class="line">&gt; 	&lt;data</div><div class="line">&gt; 		android:scheme=<span class="string">"content"</span> andorid:host=<span class="string">"com.example.project"</span></div><div class="line">&gt; 		android:port=<span class="string">"200"</span> android:path=<span class="string">"/folder/subfolder/etc"</span>/&gt;</div><div class="line">&gt; &lt;/intent-filter&gt;</div><div class="line">&gt;</div><div class="line">&gt; <span class="comment">//对应的Uri对象</span></div><div class="line">&gt; Uri uri = Uri.parse(<span class="string">"content://com.example.project:200/folder/subfolder/etc"</span>);</div><div class="line">&gt; 	</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+</blockquote>
+<h3 id="Intent的7个属性"><a href="#Intent的7个属性" class="headerlink" title="Intent的7个属性"></a>Intent的7个属性</h3><ul>
+<li><p>ComponentName：指定要启动组件的名称，设置此属性的Intent为显式Intent</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">ComponentName cName = <span class="keyword">new</span> ComponentName(MainActivity.<span class="keyword">this</span>,SecondActivity.class);</div><div class="line">intent.setComponent(cName);</div><div class="line">startActivity(intent);</div><div class="line"></div><div class="line"><span class="comment">//可以把上面代码简写</span></div><div class="line">Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>,SecondActivity.class);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Action：指定要启动组件的操作（其实是一段自定义的字符串），这样就可以把Intent与具体的某个Activity分离，实现了解耦，由setAction或Intent的构造方法设置（通常与category结合使用，需要在清单文件中配置）</p>
+<p>​</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">ACTION_MAIN:(android.intent.action.MAIN)  Android程序入口</div><div class="line"></div><div class="line">ACTION_VIEW:(android.intent.action.VIEW)  显示指定数据</div><div class="line"></div><div class="line">ACTION_EDIT:(android.intent.action.EDIT)  编辑指定数据</div><div class="line"></div><div class="line">ACTION_DIAL:(android.intent.action.DIAL)  显示拨号面板</div><div class="line"></div><div class="line">ACTION_CALL:(android.intent.action.CALL)  直接呼叫data中所带的号码</div><div class="line"></div><div class="line">ACTION_SEND:(android.intent.action.SEND)  向其他人发送数据（彩信/邮件）</div><div class="line"></div><div class="line">ACTION_ANSWER:(android.intent.action.ANSWER)  接听来电</div><div class="line"></div><div class="line">ACTION_SENDTO:(android.intent.action.SENDTO)  向其他人发送短信</div><div class="line"></div><div class="line">ACTION_SEARCH:(android.intent.action.SEARCH)  执行搜索</div><div class="line"></div><div class="line">ACTION_GET_CONTNET:(android.intent.action.GET_CONTENT)  让用户选择数据并返回</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+<li><p>Data：此属性是一个Uri对象，通常用于向action属性提供操作的数据，此属性的设置通常和Action关联，通过setData()设置，通过setType()设置MIME类型，通过setDataAndType()设置两者，注意：不可同时调用前两者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">Intent利用Action属性和Data属性启动Android系统内置组件</div><div class="line"></div><div class="line"><span class="comment">//发送短信</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendSMS</span><span class="params">(View view)</span></span>&#123;</div><div class="line">	Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SENDTO);</div><div class="line">	intent.setData(Uri.parse(<span class="string">"smsto:10086"</span>));</div><div class="line">	intent.putExtra(<span class="string">"sms_body"</span>,<span class="string">"短信内容"</span>);</div><div class="line">	startActivity(intent);</div><div class="line">&#125;</div><div class="line"><span class="comment">//拨打电话</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callPhone</span><span class="params">(View view)</span></span>&#123;</div><div class="line">	Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_CALL,Uri.parse(<span class="string">"tel:10086"</span>));</div><div class="line">	startActivity(intent);</div><div class="line">&#125;</div><div class="line"><span class="comment">//打开网页</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">openHtml</span><span class="params">(View view)</span></span>&#123;</div><div class="line">	Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW,Uri.parse(<span class="string">"http://www.baidu.com"</span>));</div><div class="line">    startActivity(intent);</div><div class="line">&#125;</div><div class="line"><span class="comment">//打开相册</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">openAlbum</span><span class="params">(View view)</span></span>&#123;</div><div class="line">	Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_GET_CONTENT);</div><div class="line">	intent.setType(<span class="string">"image/*"</span>);</div><div class="line">	startActivityForResult(wrapperIntent,<span class="number">100</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//打开相机</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">openCamera</span><span class="params">(View view)</span></span>&#123;</div><div class="line">	Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_IMAGE_CAPTURE);</div><div class="line">	startActivityForResult(intent,<span class="number">100</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  ​</div><div class="line"></div><div class="line">* Category；通过addCategory()添加Intent的类别描述(每个Intent只能指定一个action，但可以指定多个category)</div></pre></td></tr></table></figure>
+<p>  Intent intent = new Intent(“com.example.activitytest.ACTION_START”);<br>  intent.addCategory(“com.example.activitytest.MY_CATEGORY”);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  ​</div><div class="line"></div><div class="line">* Extra：通过putExtra()设置，会创建一个Bundle对象，以键值对形式存储数据</div><div class="line"></div><div class="line">  ```java</div><div class="line">  //添加Extra</div><div class="line">  String data = &quot;hello world&quot;;</div><div class="line">  Intent intent = new Intent(MainActivity.this,SecondActivity.class);</div><div class="line">  intent.putExtra(&quot;extra_data&quot;,data);</div><div class="line">  startActivity(intent);</div><div class="line"></div><div class="line">  //对应取出数据</div><div class="line">  Intent intent = getIntent();</div><div class="line">  String a = getStringExtra(&quot;extra_data&quot;);</div></pre></td></tr></table></figure>
+<p>  ​</p>
+<ul>
+<li><p>Flags：Intent可调用addFlags()来为Intent添加控制标记</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(this,MainActivity.class);</div><div class="line">//将Activity栈中处于MainActiviy主页之上的Activity都弹出</div><div class="line">intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+<li><p>Type：Type属性用于指定Data所指定的Uri对应的MIME类型</p>
+</li>
+</ul>
+<h3 id="数据回传"><a href="#数据回传" class="headerlink" title="数据回传"></a>数据回传</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">startActivityForResult(Intent intent,<span class="keyword">int</span> requestCode)</div></pre></td></tr></table></figure>
+<h3 id="PendingIntent"><a href="#PendingIntent" class="headerlink" title="PendingIntent"></a>PendingIntent</h3><p>PendingIntent（延迟的意图）对象是Intent对象的包装器，主要在下列情境中使用：</p>
+<ul>
+<li>通知执行操作时所要执行的Intent（Andorid系统的Notification执行Intent）</li>
+<li>App Widgets执行操作时要执行的Intent（主屏幕执行Intent）</li>
+<li>未来某一特定时间要执行的Intent(Android系统的AlarmManager执行Intent)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(context,ExampleActivity);</div><div class="line">PendingIntent pendingIntent = PendingIntent.getActivity(context,<span class="number">0</span>,intent,<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<h3 id="使用Intent传递自定义对象"><a href="#使用Intent传递自定义对象" class="headerlink" title="使用Intent传递自定义对象"></a>使用Intent传递自定义对象</h3><p>使用Intent传递对象主要有Serializable(简单但效率低)和Parcelable(推荐)两种方式</p>
+<ul>
+<li><p>Serializable是序列化的意思，表示将一个对象转换成可存储或者可传输的状态。序列化后的对象可以在网络上进行传输，也可以保存到本地，只需要让一个类去实现Serializable接口就可以。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个person类实现Serializable接口，这样所有的person对象就都可以序列化了</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> age;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//intent传递person对象</span></div><div class="line">Person person = <span class="keyword">new</span> Person();</div><div class="line">person.setName(<span class="string">"Tom"</span>);</div><div class="line">person.setAge(<span class="number">20</span>);</div><div class="line">Intent intent = <span class="keyword">new</span> Intent(FirstActivity.<span class="keyword">this</span>,SecondActivity.class);</div><div class="line">intent.putExtra(<span class="string">"person_data"</span>,person);</div><div class="line">startActivity(intent);</div><div class="line"></div><div class="line"><span class="comment">//SecondActivity中调用getSerializableExtra()来获取通过参数传递过来的序列化对象</span></div><div class="line">Person person = (Person)getIntent().getSerializableExtra(<span class="string">"person"</span>);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Parcelable方式的实现原理是将一个完整的对象进行分解，分解后的每一部分都是Intent所支持的数据类型，这样也就实现了传递对象的功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个person类实现Parcelable接口</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> age;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">//重写describeContents()和writeToParcel()</span></div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="meta">@override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest,<span class="keyword">int</span> flags)</span></span>&#123;</div><div class="line">    dest.writeString(name);<span class="comment">//写出name</span></div><div class="line">    dest.writeInt(age);<span class="comment">//写出age</span></div><div class="line"></div><div class="line">  <span class="comment">//提供一个CREATOR常量</span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Parcelable.Creaor&lt;Person&gt; CREATOR = <span class="keyword">new</span> Parcelable.Creator&lt;Person&gt;()&#123;</div><div class="line">  	<span class="meta">@override</span></div><div class="line">  	<span class="function"><span class="keyword">public</span> Person <span class="title">createFromParcel</span><span class="params">(Parcel source)</span></span>&#123;</div><div class="line">      Person person = <span class="keyword">new</span> Person();</div><div class="line">      person.name = source.readString();<span class="comment">//读取name</span></div><div class="line">      person.age = source.readInt();<span class="comment">//读取age</span></div><div class="line">      <span class="keyword">return</span> person;</div><div class="line">  	&#125;</div><div class="line">  	<span class="meta">@override</span></div><div class="line">  	<span class="keyword">public</span> Person[] newArray(<span class="keyword">int</span> size)&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Perosn[size];</div><div class="line">  	&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+	  <div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
+	 
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Panos Kwork 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Panos Kwork 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/android总结-intent/" rel="tag"># -android总结 -intent</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/04/android/" rel="next" title="第一行代码笔记">
+                <i class="fa fa-chevron-left"></i> 第一行代码笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Panos Kwork" />
+            
+              <p class="site-author-name" itemprop="name">Panos Kwork</p>
+              <p class="site-description motion-element" itemprop="description">Stay hungry,Stay foolish</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/panoskwork" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/users/d343c633e1e3/timeline" target="_blank" title="简书">
+                    
+                      <i class="fa fa-fw fa-book"></i>简书</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+		<div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=5113327&auto=0&height=66">
+			</iframe>
+		</div>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#android总结"><span class="nav-number">1.</span> <span class="nav-text">android总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Intent"><span class="nav-number">1.1.</span> <span class="nav-text">1.Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent作用"><span class="nav-number">1.1.1.</span> <span class="nav-text">Intent作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本用法：启动Activity、service，发送Broadcast"><span class="nav-number">1.1.2.</span> <span class="nav-text">基本用法：启动Activity、service，发送Broadcast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意："><span class="nav-number">1.1.3.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intent的7个属性"><span class="nav-number">1.1.4.</span> <span class="nav-text">Intent的7个属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据回传"><span class="nav-number">1.1.5.</span> <span class="nav-text">数据回传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PendingIntent"><span class="nav-number">1.1.6.</span> <span class="nav-text">PendingIntent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Intent传递自定义对象"><span class="nav-number">1.1.7.</span> <span class="nav-text">使用Intent传递自定义对象</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Panos Kwork</span>
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">14.4k</span>
+  
+-->
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+-->
+
+	
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/24/Android总结/';
+          this.page.identifier = '2017/11/24/Android总结/';
+          this.page.title = 'Android总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
