@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[android]]></title>
+      <title><![CDATA[第一行代码笔记]]></title>
       <url>/2017/11/04/android/</url>
       <content type="html"><![CDATA[<h1 id="第一行代码笔记"><a href="#第一行代码笔记" class="headerlink" title="第一行代码笔记"></a>第一行代码笔记</h1><hr>
 <h2 id="6-数据保存"><a href="#6-数据保存" class="headerlink" title="6.数据保存"></a>6.数据保存</h2><h3 id="6-1保存到文件"><a href="#6-1保存到文件" class="headerlink" title="6.1保存到文件"></a>6.1保存到文件</h3><h4 id="存储到内部还是外部"><a href="#存储到内部还是外部" class="headerlink" title="存储到内部还是外部"></a>存储到内部还是外部</h4><p>所有的Android设备都有两个文件存储区域：“internal”和“external”</p>
@@ -395,8 +395,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ALL tags]]></title>
-      <url>/tags/index.html</url>
+      <title><![CDATA[links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -407,14 +407,14 @@
     </entry>
     
     <entry>
-      <title><![CDATA[pictures]]></title>
-      <url>/pictures/index.html</url>
+      <title><![CDATA[ALL tags]]></title>
+      <url>/tags/index.html</url>
       <content type="html"></content>
     </entry>
     
     <entry>
-      <title><![CDATA[links]]></title>
-      <url>/links/index.html</url>
+      <title><![CDATA[pictures]]></title>
+      <url>/pictures/index.html</url>
       <content type="html"></content>
     </entry>
     
