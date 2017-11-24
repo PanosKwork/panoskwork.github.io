@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-Activity -启动模式," />
 
 
 
@@ -77,16 +77,18 @@
 
 
 
-<meta name="description" content="Stay hungry,Stay foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="不老松">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="在实际项目中我们应该根据特定的需求为每个活动指定恰当的启动模式，启动模式一共有四种：standard（标准模式）、singleTop（栈顶复用模式）、singleTask（栈内复用模式）、singleInstance（全局单例模式），可以在清单文件中通过给activity标签指定android：launchMode属性来选择启动模式  standardandroid是通过返回栈来管理活动的，在s">
+<meta name="keywords" content="-Activity -启动模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity的启动模式">
+<meta property="og:url" content="http://yoursite.com/2017/11/24/Activity的启动模式/index.html">
 <meta property="og:site_name" content="不老松">
-<meta property="og:description" content="Stay hungry,Stay foolish">
+<meta property="og:description" content="在实际项目中我们应该根据特定的需求为每个活动指定恰当的启动模式，启动模式一共有四种：standard（标准模式）、singleTop（栈顶复用模式）、singleTask（栈内复用模式）、singleInstance（全局单例模式），可以在清单文件中通过给activity标签指定android：launchMode属性来选择启动模式  standardandroid是通过返回栈来管理活动的，在s">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-24T01:52:11.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="不老松">
-<meta name="twitter:description" content="Stay hungry,Stay foolish">
+<meta name="twitter:title" content="Activity的启动模式">
+<meta name="twitter:description" content="在实际项目中我们应该根据特定的需求为每个活动指定恰当的启动模式，启动模式一共有四种：standard（标准模式）、singleTop（栈顶复用模式）、singleTask（栈内复用模式）、singleInstance（全局单例模式），可以在清单文件中通过给activity标签指定android：launchMode属性来选择启动模式  standardandroid是通过返回栈来管理活动的，在s">
 
 
 
@@ -116,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/24/Activity的启动模式/"/>
 
 
 
 
 
-  <title>不老松</title>
+  <title>Activity的启动模式 | 不老松</title>
   
 
 
@@ -141,8 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,9 +266,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -297,9 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/24/Activity的启动模式/" itemprop="url">Activity的启动模式</a></h1>
+          <h1 class="post-title" itemprop="name headline">Activity的启动模式</h1>
         
 
         <div class="post-meta">
@@ -425,21 +424,14 @@
       
 
       
-        
-          
-          
-在实际项目中我们应该根据特定的需求为每个活动指定恰当的启动模式，启动模式一共有四种：standard（标准模式）、singleTop（栈顶复用模式）、singleTask（栈内复用模式）、singleInstance（全局单例模式），可以在清单文件中通过给activity标签指定android：launchMode属性来选择启动模式
+        <blockquote>
+<p>在实际项目中我们应该根据特定的需求为每个活动指定恰当的启动模式，启动模式一共有四种：standard（标准模式）、singleTop（栈顶复用模式）、singleTask（栈内复用模式）、singleInstance（全局单例模式），可以在清单文件中通过给activity标签指定android：launchMode属性来选择启动模式</p>
+</blockquote>
+<h1 id="standard"><a href="#standard" class="headerlink" title="standard"></a>standard</h1><p>android是通过返回栈来管理活动的，在standard(系统默认)模式下，每当启动一个新的活动，它就会在返回栈中如栈，并处于栈顶的位置，此模式下。系统不会在意这个说动是否已经在返回栈中，每次启动都会创建该活动的一个新的实例。</p>
+<h1 id="singleTop"><a href="#singleTop" class="headerlink" title="singleTop"></a>singleTop</h1><p><strong>栈顶复用模式</strong>：当活动的启动模式指定为singleTop，在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的实例。</p>
+<h1 id="singleTask"><a href="#singleTask" class="headerlink" title="singleTask"></a>singleTask</h1><p><strong>栈内复用模式</strong>：当启动模式指定为singleTask，每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果存在，则直接使用该实例，并把在这个活动之上的所有活动统统出栈，如果不存在就会创建一个新的活动的实例。</p>
+<h1 id="singleInstance"><a href="#singleInstance" class="headerlink" title="singleInstance"></a>singleInstance</h1><p><strong>全局单例模式</strong>：此模式下的活动会启用一个新的返回栈来管理这个活动，假设我们的程序中有一个活动是允许其他程序调用的，如果我们想实现其他程序和我们的程序可以共享这个活动的实例，使用前3种模式是实现不了的，因为每个程序都会有有自己的返回栈，同一个活动在不同的返回栈中入栈时必然是创建了新的实例。而singleInstance模式下，不管哪个程序来访问这个活动，都共用的同一个返回栈，也就解决了共享活动实例的问题。</p>
 
-standardandroid是通过返回栈来管理活动的，在s
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/24/Activity的启动模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
     
@@ -449,437 +441,70 @@ standardandroid是通过返回栈来管理活动的，在s
 	 
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Panos Kwork 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Panos Kwork 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/24/Android总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Panos Kwork">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不老松">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/24/Android总结/" itemprop="url">Intent</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T01:54:40+08:00">
-                2017-11-24 01:54:40
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T09:51:23+08:00">
-                2017-11-24 09:51:23
-              </time>
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习-code/" itemprop="url" rel="index">
-                    <span itemprop="name">-学习 -code</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Activity-启动模式/" rel="tag"># -Activity -启动模式</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/24/Android总结/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/24/Android总结/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,880 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          1.IntentIntent作用
-Intent用于封装程序的“调用意图”，两个Activity之间，可以把需要交换的数据封装成Bundle对象，然后使用Intent携带Bundle对象，实现数据交换；
-Intent还是各个应用程序组件之间通信的重要媒介，不管启动Activity、Service还是ContentProvider，Android均使用统一的Intent对象来封装这种“启动意图”，很明
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/24/Android总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/24/Android总结/" rel="next" title="Intent">
+                <i class="fa fa-chevron-left"></i> Intent
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	  <div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
-	 
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/android/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Panos Kwork">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="不老松">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/04/android/" itemprop="url">第一行代码笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T17:59:50+08:00">
-                2017-11-04 17:59:50
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2017-11-24T01:48:03+08:00">
-                2017-11-24 01:48:03
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习-code/" itemprop="url" rel="index">
-                    <span itemprop="name">-学习 -code</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/04/android/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/04/android/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  12,489 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  59 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          第一行代码笔记
-6.数据保存6.1保存到文件存储到内部还是外部所有的Android设备都有两个文件存储区域：“internal”和“external”
-
-Internal storage:
-
-总是可用的
-
-这里的文件默认只能被我们的APP所访问
-
-当用户卸载APP时，系统会把internal内该APP相关的文件都清除干净
-
-Internal是我们在想确保不被用户与其他APP所访问的最佳存储位置
-​
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/04/android/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	  <div style="text-align:center;color: #ccc;font-size:14px;">---------------- The End ----------------</div>
-	 
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -889,10 +514,37 @@ Internal是我们在想确保不被用户与其他APP所访问的最佳存储位
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -900,6 +552,20 @@ Internal是我们在想确保不被用户与其他APP所访问的最佳存储位
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -920,8 +586,17 @@ Internal是我们在想确保不被用户与其他APP所访问的最佳存储位
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1004,6 +679,22 @@ Internal是我们在想确保不被用户与其他APP所访问的最佳存储位
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#standard"><span class="nav-number">1.</span> <span class="nav-text">standard</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#singleTop"><span class="nav-number">2.</span> <span class="nav-text">singleTop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#singleTask"><span class="nav-number">3.</span> <span class="nav-text">singleTask</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#singleInstance"><span class="nav-number">4.</span> <span class="nav-text">singleInstance</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1154,6 +845,10 @@ Internal是我们在想确保不被用户与其他APP所访问的最佳存储位
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1171,6 +866,18 @@ Internal是我们在想确保不被用户与其他APP所访问的最佳存储位
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/24/Activity的启动模式/';
+          this.page.identifier = '2017/11/24/Activity的启动模式/';
+          this.page.title = 'Activity的启动模式';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
