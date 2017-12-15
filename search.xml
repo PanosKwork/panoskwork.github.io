@@ -840,20 +840,14 @@
   
     
     <entry>
-      <title><![CDATA[分类]]></title>
-      <url>/categories/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[links]]></title>
-      <url>/links/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[notes]]></title>
       <url>/notes/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[分类]]></title>
+      <url>/categories/index.html</url>
       <content type="html"></content>
     </entry>
     
@@ -866,6 +860,12 @@
     <entry>
       <title><![CDATA[ALL tags]]></title>
       <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[links]]></title>
+      <url>/links/index.html</url>
       <content type="html"></content>
     </entry>
     
